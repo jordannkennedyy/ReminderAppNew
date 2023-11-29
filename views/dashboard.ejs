@@ -1,0 +1,13 @@
+<h1 class="mt-4">Dashboard</h1>
+<p class="lead mb-3">Welcome <%= user.name %></p>
+<p>Current Active Sessions:</p>
+<table>
+    <tr>
+    <% for (const session in sessions) { %>
+    <p>SessionID: <%= String(session) %><br>
+    UserID: <%= sessions[session].passport.user %><br>
+    <a href=<%= "/auth/destroy/" + session %>>Revoke Session</a></p>
+    <% } %>
+    </tr>
+</table>
+<a href="/auth/logout" class="btn btn-secondary">Logout</a>
