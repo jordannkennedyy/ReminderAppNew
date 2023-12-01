@@ -40,13 +40,18 @@ let remindersController = {
       cover: ""
     };
 
-    //Case 1: User uploads image
+    // Case 1: User uploads image
     if (req.file) {
-      // fs.rename(req.file.filename, req.file.originalname, (err, data) => {
-      //   if (err) return err;
-      //   reminder.cover = req.file.path
-      // })
-      reminder.cover = req.file.path
+      fs.rename(req.file.path, "public/uploads/" + req.file.originalname, (err) => {
+        if (err) console.log(err);
+        // reminder.cover = req.file.path
+        // reminder.cover = data
+        // console.log(reminder.cover)
+        // reminder.cover = req.file.path
+      })
+    }
+    if (req.file) {
+      reminder.cover = "public/uploads/" + req.file.originalname
     }
 
     // Case 2: User checks random cover checkbox
