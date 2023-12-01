@@ -51,13 +51,14 @@ let remindersController = {
     //     // reminder.cover = req.file.path
     //   })
     // }
-    // fs.rename(req.file.path, req.file.originalname, () => {
-    //       console.log("rename success")
-    // })
+    fs.rename(req.file.path, "public/uploads/" + req.file.originalname, () => {
+          reminder.cover = "public/uploads/" + req.file.originalname
+          console.log(reminder.cover)
+    })
 
-    if (req.file) {
-      reminder.cover = "public/uploads/" + req.file.originalname
-    }
+    // if (req.file) {
+    //   reminder.cover = "public/uploads/" + req.file.originalname
+    // }
 
     // Case 2: User checks random cover checkbox
     if (req.body.randomCover == "true") {
