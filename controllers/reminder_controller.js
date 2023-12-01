@@ -46,7 +46,7 @@ let remindersController = {
       //   if (err) return err;
       //   reminder.cover = req.file.path
       // })
-      reminder.cover = req.file.path
+      reminder.cover = req.file.originalname
       console.log(req.file.path)
     }
 
