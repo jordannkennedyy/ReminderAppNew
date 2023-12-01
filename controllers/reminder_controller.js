@@ -47,6 +47,7 @@ let remindersController = {
       //   reminder.cover = req.file.path
       // })
       reminder.cover = req.file.path
+      console.log(req.file.path)
     }
 
     // Case 2: User checks random cover checkbox
