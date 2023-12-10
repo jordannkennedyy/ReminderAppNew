@@ -35,4 +35,13 @@ Jordan:
     Authenticated users cannot delete other user information
     added logout button
     Update trello board
+    
 
+November 29th, 2023 (Sprint 3)
+
+Kody Millar:
+
+    Installed multer
+    Added dynamic image tag in single-reminder.ejs file
+    Created a new cover key in the reminder object to store the cover image for that reminder
+    Renamed path to image to get the correct image path
