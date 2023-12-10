@@ -57,7 +57,6 @@ app.use((req, res, next) => {
   next();
 });
 
-
 // change to render user homepage (reminder index views) - Jordan
 app.use("/", indexRoute);
 
@@ -77,6 +76,9 @@ app.post("/reminder/", upload.single('cover'),  ensure, reminderController.creat
 // ⭐ Implemented in Sprint 1 - Jordan
 app.post("/reminder/update/:id", ensure, reminderController.update);
 app.post("/reminder/delete/:id", ensure, reminderController.delete);
+
+
+
 
 
 app.listen(port, () => {
