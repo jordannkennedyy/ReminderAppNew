@@ -48,5 +48,6 @@ Kody Millar:
 
 
 Jordan Kennedy: 
+
     Assist with renaming image path
     Assist with creating new cover key in reminder object
