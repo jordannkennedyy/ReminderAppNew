@@ -9,6 +9,9 @@ router.get("/", (req, res) => {
 
 // change to render user homepage (reminder index views) Jordan
 router.get("/views/index", ensureAuthenticated, (req, res) => {
+  res.locals.user = req.user
+  console.log("LOCALS")
+  console.log(res.locals)
   res.render("index", {
     user: req.user,
   });

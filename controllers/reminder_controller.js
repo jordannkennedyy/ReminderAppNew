@@ -3,7 +3,8 @@
 // look at each function and integrate
 // import authenticated user from user controller
 // req.user.reminders
-const fs = require("fs")
+const fs = require("fs");
+const path = require("path");
 
 let database = require("../models/userModel").database;
 // let authUser = require("../controllers/userController").getUserByEmailIdAndPassword
@@ -24,7 +25,7 @@ let remindersController = {
       return reminder.id == reminderToFind;
     });
     if (searchResult != undefined) {
-      res.render("reminder/single-reminder", { reminderItem: searchResult });
+      res.render("reminder/single-reminder", { reminderItem: searchResult , reminderCover: res.locals.cover});
     } else {
       res.render("reminder/index", { reminders: req.user.reminders });
     }
@@ -41,6 +42,7 @@ let remindersController = {
     };
 
     // Case 1: User uploads image
+
     if (req.file) {
       fs.rename(req.file.path, "public/uploads/" + req.file.originalname, () => {
             reminder.cover = "/uploads/" + req.file.originalname
@@ -48,21 +50,16 @@ let remindersController = {
       })
     }
 
-    // if (req.file) {
-    //   reminder.cover = "public/uploads/" + req.file.originalname
+    // Case 2: User checks random cover checkbox
+    // if (req.body.randomCover == "true") {
+    //   fetch("https://api.unsplash.com/photos/random")
+    //     .then(response => response.json())
+    //     .then(data => {
+    //       reminder.cover = data.urls[0].full
+    //     }).then(console.log(data))
     // }
 
-    // Case 2: User checks random cover checkbox
-    if (req.body.randomCover == "true") {
-      fetch("https://api.unsplash.com/photos/random")
-        .then(response => response.json())
-        .then(data => {
-          reminder.cover = data.urls[0].full
-        }).then(console.log(data))
-    }
-
     // Case 3: user chooses nothing, just empty string
-    req.user.reminders.push(reminder);
     res.redirect("/reminder/" + req.params.id);
   },
 
@@ -80,7 +77,6 @@ let remindersController = {
       if (reminder.id == reminderToEdit) {
         reminder.title = req.body.title;
         reminder.description = req.body.description;
-        
         if (req.body.completed == "true") {
           reminder.completed = true;
         }
@@ -97,6 +93,8 @@ let remindersController = {
     let arrayIndexNumber = reminderToDelete - 1;
     req.user.reminders.splice(arrayIndexNumber, 1);
     res.render("reminder/index", { reminders: req.user.reminders });
+
+  
   }}
 
 
