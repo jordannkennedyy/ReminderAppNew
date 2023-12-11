@@ -41,18 +41,8 @@ let remindersController = {
     };
 
     // Case 1: User uploads image
-    // if (req.file) {
-    //   fs.rename(req.file.path, req.file.originalname, () => {
-    //     reminder.cover = "public/uploads/" + req.file.originalname
-    //     console.log("rename success")
-    //     // reminder.cover = req.file.path
-    //     // reminder.cover = data
-    //     // console.log(reminder.cover)
-    //     // reminder.cover = req.file.path
-    //   })
-    // }
     fs.rename(req.file.path, "public/uploads/" + req.file.originalname, () => {
-          reminder.cover = "public/uploads/" + req.file.originalname
+          reminder.cover = "/uploads/" + req.file.originalname
           console.log(reminder.cover)
     })
 
