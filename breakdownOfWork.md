@@ -45,6 +45,7 @@ Kody Millar:
     Added dynamic image tag in single-reminder.ejs file
     Created a new cover key in the reminder object to store the cover image for that reminder
     Renamed path to image to get the correct image path
+    Create function for user to generate random cover image
 
 
 Jordan Kennedy: 
