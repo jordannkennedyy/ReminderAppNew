@@ -53,12 +53,17 @@ let remindersController = {
     // }
 
     // Case 2: User checks random cover checkbox
-    if (req.body.randomCover == "true") {
-      fetch("https://api.unsplash.com/photos/random")
+    if (req.body.randomCover == "checked") {
+      console.log("TRUEEEEE")
+      fetch("https://api.unsplash.com/photos/random?client_id=" + "F31_fS6VOf4YG0PCw5dx5UUQ8qWwpgpYRWEQPYsifAE")
         .then(response => response.json())
         .then(data => {
-          reminder.cover = data.urls[0].full
-        }).then(console.log(data))
+          // console.log(data)
+          console.log("URLS!!!!!!!!")
+          // console.log(data.urls.full)
+          reminder.cover = data.urls.full
+        })
+        .catch(err => console.log(err))
     }
 
     // Case 3: user chooses nothing, just empty string
