@@ -63,7 +63,7 @@ let remindersController = {
 
     // Case 3: user chooses nothing, just empty string
     req.user.reminders.push(reminder);
-    res.redirect("/reminder/" + req.params.id);
+    res.redirect("/reminders");
   },
 
   edit: (req, res) => {
